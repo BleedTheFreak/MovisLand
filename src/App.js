@@ -21,12 +21,13 @@ const App = () => {
 
 	return (
 		<div className="app">
-			<h1>MovieLand</h1>
+			<h1 className="Logo" onClick={()=> window.location.reload(false)}>MovieLand</h1>
 			<div className="search">
 				<input
 					placeholder="Search for movie"
 					value={searchTitle}
 					onChange={(e) => setSearchTitle(e.target.value)}
+					onKeyPress={(e) => (e.code === 'Enter') ? searchMovies(searchTitle) : null}
 				/>
 				<img
 					src={searchIcon}
@@ -38,7 +39,7 @@ const App = () => {
 				movies?.length > 0
 					?
 					(
-						<div className="container">
+						<div className="containers">
 							{movies.map((movie) => <MovieCard movie={movie} />)}
 						</div>
 					)
